@@ -11,9 +11,14 @@ router.get('/contacts', async (req, res) => {
 });
 
 router.put('/contact', async (req, res) => {
-  const { name, email, phone } = req.body;
+  const { name, email, phone, address } = req.body;
 
-  if (typeof name !== 'string' || typeof email === 'string' || typeof phone !== 'string') {
+  if (
+    typeof name !== 'string' ||
+    typeof email !== 'string' ||
+    typeof phone !== 'string' ||
+    typeof address !== 'string'
+  ) {
     res.status(400).send(createError(400));
   }
 
@@ -21,14 +26,15 @@ router.put('/contact', async (req, res) => {
     email,
     name,
     phone,
+    address,
   }, { returning: true });
 
   res.json(newContact.toJSON());
 });
 
 router.post('/contact/:contactId', async (req, res) => {
-  const { contactId } = req.params;
-  const { name, email, phone } = req.body;
+  const contactId = +req.params.contactId;
+  const { name, email, phone, address} = req.body;
 
   if (Number.isNaN(Number(contactId))) {
     res.status(400).send(createError(400));
@@ -43,6 +49,7 @@ router.post('/contact/:contactId', async (req, res) => {
       name: name || contact.name,
       email: email || contact.email,
       phone: phone || contact.phone,
+      address: address || contact.address,
     }, { where: { id: Number(contactId) } });
 
     contact = await PhoneDirectory.findOne({ where: { id: Number(contactId) } });
@@ -52,7 +59,7 @@ router.post('/contact/:contactId', async (req, res) => {
 });
 
 router.delete('/contact/:contactId', async (req, res) => {
-  const { contactId } = req.params;
+  const contactId = +req.params.contactId;
 
   if (typeof contactId !== 'number') {
     res.status(400).send(createError(400));

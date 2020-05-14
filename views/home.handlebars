@@ -1,27 +1,54 @@
-<h1>Mis contactos</h1>
-
-<table>
-  <thead>
-    <tr>
-      <td>Name</td>
-      <td>Phone</td>
-      <td>Email</td>
-      <td></td>
-    </tr>
-  </thead>
-  <tbody id="tbody"></tbody>
-  <tfoot>
-    <tr>
-      <td>
-        <input type="text" name="name" id="iName" placeholder="Name">
-      </td>
-      <td>
-        <input type="text" name="phone" id="iPhone" placeholder="Phone">
-      </td>
-      <td>
-        <input type="text" name="email" id="iEmail" placeholder="Email">
-      </td>
-      <td><button id="addButton">Add</button></td>
-    </tr>
-  </tfoot>
-</table>
+<div class="ui container center aligned" style="margin-top: 2em;">
+  <h2 class="ui header left aligned">
+    <i class="users icon"></i>
+    <div class="content">
+      My contacts
+      <div class="sub header">Personal user management system.</div>
+    </div>
+  </h2>
+  <table class="ui celled table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+    <tfoot>
+      <tr>
+        <td>
+          <div class="ui icon input">
+            <input type="text" placeholder="Name" name="name" id="iName">
+            <i class="user tie icon"></i>
+          </div>
+        </td>
+        <td>
+          <div class="ui icon input">
+            <input type="text" placeholder="Phone" name="phone" id="iPhone">
+            <i class="phone icon"></i>
+          </div>
+        </td>
+        <td>
+          <div class="ui icon input">
+            <input type="text" placeholder="Email" name="email" id="iEmail">
+            <i class="envelope icon"></i>
+          </div>
+        </td>
+        <td>
+          <div class="ui icon input">
+            <input type="text" placeholder="Address" name="address" id="iAddress">
+            <i class="map marker alternate icon"></i>
+          </div>
+        </td>
+        <td class="center aligned">
+          <div class="ui right floated small primary labeled icon button" id="addButton">
+            <i class="user icon"></i> Add Contact
+          </div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
